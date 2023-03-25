@@ -10,10 +10,10 @@ for i = 0, mediaItems - 1, 1 do
     rgnend = pos + reaper.GetMediaItemInfo_Value(item, 'D_LENGTH')
 
     nameFull = reaper.GetTakeName(take)
-    pos1 = string.find(nameFull, ".", 1, true) + 1
-    pos2 = string.find(nameFull, ".", pos1, true) - 1
-    name = "CHAP=" .. string.sub(nameFull, pos1, pos2)
-
+    pos1 = string.find(nameFull, ".", 1, true) - 1
+    -- reaper.ShowConsoleMsg(pos1)
+    -- pos2 = string.find(nameFull, ".", pos1, true) - 1
+    name = "CHAP=" .. string.sub(nameFull, 1, pos1)
     wantidx = i
     reaper.AddProjectMarker(proj, isrgn, pos, rgnend, name, wantidx)
 end
